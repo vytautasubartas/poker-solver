@@ -1,5 +1,6 @@
 package lt.uvytautas.solver.domain.combinations;
 
+import lt.uvytautas.solver.constants.CombinationType;
 import lt.uvytautas.solver.constants.Symbol;
 import lt.uvytautas.solver.domain.common.Combination;
 
@@ -11,6 +12,9 @@ public class TwoPair {
     private Symbol kicker;
 
     public TwoPair(Combination combination) {
+        if(combination.getCombinationType()!= CombinationType.TWO_PAIR){
+            throw new IllegalArgumentException("Type: " + combination.getCombinationType() + " not supported");
+        }
         for (Map.Entry<Symbol, Long> entry : combination.getDifferentSymbolCardsCountMap().entrySet()) {
             if (entry.getValue() == 1) {
                 this.kicker = entry.getKey();

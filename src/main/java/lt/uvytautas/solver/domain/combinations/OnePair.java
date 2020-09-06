@@ -1,5 +1,6 @@
 package lt.uvytautas.solver.domain.combinations;
 
+import lt.uvytautas.solver.constants.CombinationType;
 import lt.uvytautas.solver.constants.Symbol;
 import lt.uvytautas.solver.domain.common.Combination;
 
@@ -12,6 +13,9 @@ public class OnePair {
     private final TreeSet<Symbol> kickersSet = new TreeSet<>();
 
     public OnePair(Combination combination) {
+        if(combination.getCombinationType()!= CombinationType.ONE_PAIR){
+            throw new IllegalArgumentException("Type: " + combination.getCombinationType() + " not supported");
+        }
         for (Map.Entry<Symbol, Long> entry : combination.getDifferentSymbolCardsCountMap().entrySet()) {
             if (entry.getValue() == 1) {
                 kickersSet.add(entry.getKey());

@@ -8,7 +8,6 @@ import lt.uvytautas.solver.domain.common.PokerParty;
 
 public class PokerPartyParserService {
     public PokerParty parsePokerPartyFromLine(String line) {
-
         String[] cards = line.split(" ");
         Hand firstPlayerHand = new Hand(symbolAndSuitStringToCard(cards[0]), symbolAndSuitStringToCard(cards[1]),
                 symbolAndSuitStringToCard(cards[2]), symbolAndSuitStringToCard(cards[3]), symbolAndSuitStringToCard(cards[4]));
